@@ -1,6 +1,9 @@
 console.log("script.js connected!");
 
-let result = 0
+let result1 = 0
+let result2 = 0
+let result3 = 0
+let result4 = 0
 
 let buttons1 = document.querySelectorAll("#question-1 button");
 buttons1.forEach(function(button){
@@ -14,15 +17,14 @@ buttons1.forEach(function(button){
 
     let answer = button.getAttribute("data-answer");
     
-    // Now we can write different responses based on the mood
     if (answer === "A") {
-      result = result + 1;
+      result1 = 1;
     } else if (answer === "B") {
-      result = result + 2;
+      result1 = 2;
     } else if (answer === "C") {
-      result = result + 3;
+      result1 = 3;
     } else if (answer === "D") {
-      result = result + 4;
+      result1 = 4;
     };
   });
 });
@@ -39,15 +41,14 @@ buttons2.forEach(function(button){
 
     let answer = button.getAttribute("data-answer");
     
-    // Now we can write different responses based on the mood
     if (answer === "A") {
-      result = result + 4;
+      result2 = 4;
     } else if (answer === "B") {
-      result = result + 1;
+      result2 = 1;
     } else if (answer === "C") {
-      result = result + 2;
+      result2 = 2;
     } else if (answer === "D") {
-      result = result + 3;
+      result2 = 3;
     };
   });
 });
@@ -64,15 +65,14 @@ buttons3.forEach(function(button){
 
     let answer = button.getAttribute("data-answer");
     
-    // Now we can write different responses based on the mood
     if (answer === "A") {
-      result = result + 2;
+      result3 = 2;
     } else if (answer === "B") {
-      result = result + 4;
+      result3 = 4;
     } else if (answer === "C") {
-      result = result + 1;
+      result3 = 1;
     } else if (answer === "D") {
-      result = result + 3;
+      result3 = 3;
     };
   });
 });
@@ -89,15 +89,37 @@ buttons4.forEach(function(button){
 
     let answer = button.getAttribute("data-answer");
     
-    // Now we can write different responses based on the mood
     if (answer === "A") {
-      result = result + 2;
+      result4 = 2;
     } else if (answer === "B") {
-      result = result + 4;
+      result4 = 4;
     } else if (answer === "C") {
-      result = result + 3;
+      result4 = 3;
     } else if (answer === "D") {
-      result = result + 1;
+      result4 = 1;
     };
   });
+});
+
+function displayResult(value1, value2, value3, value4) {
+    let output = document.getElementById("result-text");
+    let resultContainer = document.getElementById("result-container");
+    let finalResult = value1 + value2 + value3 + value4;
+
+    if (4 <= finalResult && finalResult <=6) {
+      output.textContent = "Your Jedi Master is Obi-Wan Kenobi!";
+    } else if (7 <= finalResult && finalResult <= 9) {
+      output.textContent = "Your Jedi Master is Luke Skywalker!";
+    } else if (10 <= finalResult && finalResult <= 12) {
+      output.textContent = "Your Jedi Master is Mace Windu!";
+    } else if (13 <= finalResult && finalResult <= 16) {
+      output.textContent = "Your Jedi Master is Rey Skywalker!";
+    };
+
+    resultContainer.style.display = "block";
+};
+
+let showResult = document.getElementById("show-result");
+showResult.addEventListener("click", function() {
+    displayResult(result1, result2, result3, result4);
 });
